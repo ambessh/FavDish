@@ -1,23 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.RandomDishFragment">
-
-    <TextView
-        android:id="@+id/text_notifications"
+    tools:context=".view.fragments.RandomDishFragment"
+    android:orientation="vertical"
+    android:id="@+id/refresh_layout"
+    >
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Random dish"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fl_details"
+                >
+                <ImageView
+                    android:id="@+id/imaged"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:src="@color/purple_200"
+                    android:scaleType="fitXY"
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:elevation="10dp"
+                    app:cardCornerRadius="50dp"
+                    app:cardUseCompatPadding="true"
+
+                    >
+                    <ImageView
+                        android:id="@+id/love"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_heart"
+                        android:layout_margin="10dp"
+                        android:visibility="visible"
+                        />
+
+                    <ImageView
+                        android:id="@+id/love_red"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_love_red"
+                        android:layout_margin="10dp"
+                        android:visibility="gone"
+                        />
+                </androidx.cardview.widget.CardView>
+
+
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/dll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/titled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Test"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_margin="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/typed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type"
+
+                    android:textSize="24dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/categ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+
+                    android:textSize="24dp"
+                    android:layout_marginStart="10dp"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredients"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_margin="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/ing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ing"
+                    android:textSize="24dp"
+                    android:layout_marginStart="10dp"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Direction to cook"
+                    android:textStyle="bold"
+                    android:textSize="24dp"
+                    android:layout_margin="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/dtc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dtc"
+                    android:textSize="24dp"
+                    android:layout_marginStart="10dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tame"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/COOKTAME"
+                    android:textSize="24dp"
+
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+
+
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

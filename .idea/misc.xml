@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/etdesign.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/ic_all_dishes.xml" value="0.16018518518518518" />
         <entry key="app/src/main/res/drawable/ic_camera.xml" value="0.1358108108108108" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1358108108108108" />
+        <entry key="app/src/main/res/drawable/ic_favorite_dish.xml" value="0.16018518518518518" />
         <entry key="app/src/main/res/drawable/ic_gallery.xml" value="0.1358108108108108" />
+        <entry key="app/src/main/res/drawable/ic_random_dish.xml" value="0.16018518518518518" />
         <entry key="app/src/main/res/layout/activity_add_update_dish.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1503623188405797" />
@@ -15,12 +18,17 @@
         <entry key="app/src/main/res/layout/dialogbox.xml" value="0.10416666666666667" />
         <entry key="app/src/main/res/layout/fragment_all_dish.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_dish_details.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_favorite_dishes.xml" value="0.11820652173913043" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_random_dish.xml" value="0.11820652173913043" />
         <entry key="app/src/main/res/layout/item_custom_list.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/l_dish_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/progress_bar.xml" value="0.1" />
         <entry key="app/src/main/res/menu/addupdatedishmenu.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/menu/menu_more.xml" value="0.17175925925925925" />
+        <entry key="app/src/main/res/menu/share_icon.xml" value="0.14351851851851852" />
       </map>
     </option>
   </component>

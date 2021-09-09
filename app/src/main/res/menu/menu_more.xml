@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/edit_more" android:icon="@drawable/ic_edit"
+        android:orderInCategory="100" android:title="@string/edit_more"/>
+
+    <item android:id="@+id/delete_more" android:icon="@drawable/ic_edit"
+        android:orderInCategory="101" android:title="@string/delete_more"/>
+
+</menu>

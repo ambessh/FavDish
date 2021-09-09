@@ -11,5 +11,18 @@
     <string name="all_dish">All dishes</string>
     <string name="fav_dishes">Favorite dishes</string>
     <string name="random_dish">Random dish</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit_more">Edit Dish</string>
+    <string name="delete_more">Delete Dish</string>
 
+    <string name="edit_dish">Edit Dish</string>
+    <string name="update_dish">Update Dish</string>
+    <string name="delete_dish">Delete Dish</string>
+    <string name="filter">Select to filter!</string>
+    <string name="All_SHOW">SHOW All</string>
+    <string name="COOKTAME">Time to cook this dish is %1$s</string>
+
+    <string name="notification_title">Checkout new dish recipe</string>
+    <string name="notification_subtitle">Tap for more details</string>
 </resources>

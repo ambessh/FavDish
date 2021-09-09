@@ -9,17 +9,41 @@
         android:id="@+id/navigation_all_dish"
         android:name="com.example.favdish.view.fragments.AllDishFragment"
         android:label="@string/all_dish"
-        tools:layout="@layout/fragment_all_dish" />
+        tools:layout="@layout/fragment_all_dish">
+
+        <action
+            app:destination="@id/navigation_dish_details"
+            android:id="@+id/from_all_dish_to_dish_details"
+            />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_fav_dish"
         android:name="com.example.favdish.view.fragments.FavoriteDishesFragment"
         android:label="@string/fav_dishes"
-        tools:layout="@layout/fragment_favorite_dishes" />
+        tools:layout="@layout/fragment_favorite_dishes" >
+
+   <action app:destination="@id/navigation_dish_details"
+       android:id="@+id/from_fav_dish_to_details"
+       />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_random_dish"
         android:name="com.example.favdish.view.fragments.RandomDishFragment"
         android:label="@string/random_dish"
         tools:layout="@layout/fragment_random_dish" />
+
+    <fragment
+        android:id="@+id/navigation_dish_details"
+        android:name="com.example.favdish.view.fragments.DishDetailsFragment"
+        android:label="Dish Details"
+        tools:layout="@layout/fragment_dish_details"
+        >
+        <argument
+            android:name="data"
+            app:argType="com.example.favdish.model.entities.FavDish"
+            app:nullable="true"
+            />
+    </fragment>
 </navigation>

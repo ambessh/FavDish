@@ -56,6 +56,8 @@ class AddUpdateDishActivity : AppCompatActivity() ,View.OnClickListener{
     private  var imagePath:String=""
     lateinit var myDialog:Dialog
 
+    var myEditDish:FavDish?=null
+
     private val mFavDishViewModel:FavDishViewModel by viewModels {
         FavDishViewModelFactory((application as FavDishApplication).repository)
     }
@@ -65,6 +67,25 @@ class AddUpdateDishActivity : AppCompatActivity() ,View.OnClickListener{
 
         addUpdateDishBinding= ActivityAddUpdateDishBinding.inflate(layoutInflater)
         setContentView(addUpdateDishBinding.root)
+
+
+        if(intent.hasExtra(Constants.EDIT_DISH)){
+           myEditDish= intent.getParcelableExtra<FavDish>(Constants.EDIT_DISH)
+           myEditDish?.let {
+               if (it.id != 0) {
+                   Glide.with(this@AddUpdateDishActivity).load(it.image).centerCrop()
+                       .into(addUpdateDishBinding.mainImage)
+                   imagePath=it.image
+                   addUpdateDishBinding.title.setText(it.title)
+                   addUpdateDishBinding.type.setText(it.type)
+                   addUpdateDishBinding.category.setText(it.category)
+                   addUpdateDishBinding.cookingTime.setText(it.cookingTime)
+                   addUpdateDishBinding.ingredients.setText(it.ingredients)
+                   addUpdateDishBinding.directionCook.setText(it.directionToCook)
+                   addUpdateDishBinding.button.setText(resources.getString(R.string.update_dish))
+               }
+           }
+        }
         setUpActionBar()
 
 
@@ -78,6 +99,11 @@ class AddUpdateDishActivity : AppCompatActivity() ,View.OnClickListener{
 
     private fun setUpActionBar(){
         setSupportActionBar(addUpdateDishBinding.toolbar)
+        if(myEditDish!=null && myEditDish!!.id!=0){
+            supportActionBar?.let {
+                it.title=resources.getString(R.string.edit_dish)
+            }
+        }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         addUpdateDishBinding.toolbar.setNavigationOnClickListener{
             onBackPressed()
@@ -316,7 +342,7 @@ class AddUpdateDishActivity : AppCompatActivity() ,View.OnClickListener{
         binding.tvSelect.text=title
         binding.rvItem.layoutManager=LinearLayoutManager(this)
 
-        val adapter=CustomListItemAdapter(this,list,selection)
+        val adapter=CustomListItemAdapter(this,null,list,selection)
         binding.rvItem.adapter=adapter
         myDialog.show()
     }
@@ -342,13 +368,14 @@ class AddUpdateDishActivity : AppCompatActivity() ,View.OnClickListener{
     }
 
     fun ButtonPressed(){
-        val imagePath=imagePath.toString().trim{it <= ' '}
-        val title=addUpdateDishBinding.title.text.toString().trim{it <= ' '}
-        val type=addUpdateDishBinding.type.text.toString().trim{it <= ' '}
-        val category=addUpdateDishBinding.category.text.toString().trim{it <= ' '}
-        val ingredients=addUpdateDishBinding.ingredients.text.toString().trim{it <= ' '}
-        val cookingTime=addUpdateDishBinding.cookingTime.text.toString().trim{it <= ' '}
-        val directionCook=addUpdateDishBinding.directionCook.text.toString().trim{it <= ' '}
+        var imagePath=imagePath.toString().trim{it <= ' '}
+        var title=addUpdateDishBinding.title.text.toString().trim{it <= ' '}
+        var type=addUpdateDishBinding.type.text.toString().trim{it <= ' '}
+        var category=addUpdateDishBinding.category.text.toString().trim{it <= ' '}
+        var ingredients=addUpdateDishBinding.ingredients.text.toString().trim{it <= ' '}
+        var cookingTime=addUpdateDishBinding.cookingTime.text.toString().trim{it <= ' '}
+        var directionCook=addUpdateDishBinding.directionCook.text.toString().trim{it <= ' '}
+
 
 
         if(TextUtils.isEmpty((imagePath))){
@@ -373,6 +400,14 @@ class AddUpdateDishActivity : AppCompatActivity() ,View.OnClickListener{
             Toast.makeText(this@AddUpdateDishActivity,"please enter the direction",Toast.LENGTH_SHORT).show()
         } else{
 
+            var id=0
+
+            myEditDish?.let {
+                if(myEditDish!!.id!=0){
+                  id= myEditDish!!.id
+                }
+            }
+
             val favDishDetails:FavDish=FavDish(
                 imagePath,
                 Constants.DISH_IMAGE_SOURCE_LOCAL,
@@ -382,10 +417,18 @@ class AddUpdateDishActivity : AppCompatActivity() ,View.OnClickListener{
                 ingredients,
                 cookingTime,
                 directionCook,
-                false
+                false,
+                id
             )
-            mFavDishViewModel.insert(favDishDetails)
-            Toast.makeText(this@AddUpdateDishActivity,"data success upload!!",Toast.LENGTH_SHORT).show()
+
+            if(id==0){
+                mFavDishViewModel.insert(favDishDetails)
+                Toast.makeText(this@AddUpdateDishActivity,"data success upload!!",Toast.LENGTH_SHORT).show()
+            }else{
+                mFavDishViewModel.updateData(favDishDetails)
+                Toast.makeText(this@AddUpdateDishActivity,"data success update!!",Toast.LENGTH_SHORT).show()
+            }
+
             finish()
         }
 
